@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+    {% if category %}
+        {{category.description|truncatewords:150}}
+    {% else %}
+        Hello welcome check out our latest items
+    {% endif %}
+{% endblock %}
+{% block title %}
+    {% if category %}
+        {{category.name}}
+    {% else %}
+        ABC Store
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+{% if category %}
+<div>
+    <div class="row my_row">
+        <div class="mx_auto">
+            <p><a href="{% url 'shopapp:Allprocat'%}">Our Products</a></p>
+        </div>
+    </div>
+</div>
+{% endif %}
+<div class="mx_auto">
+    {% if category %}
+    <img class="my_image" src="{{category.image.url}}" alt="{{category.name}}">
+</div>
+<br>
+<div>
+    <h1 class="text-center my_title">{{category.name}}</h1>
+    <p class="text-justify">{{category.description}}</p>
+</div>
+    {% else %}
+<div>
+    <img src="{% static 'images/banner.png' %}" alt="bannerimage" style="width: 100%;">
+</div>
+<br>
+<div>
+    <h1 class="text-center">Products</h1>
+    <p class="text-justify">E-commerce is revolutionizing the way we all shop in India. Why do you want to hop from one store to another in search of any products when you can find it on the Internet in a single click? We provide you the best in clothes and vegetables. You name it, and you can stay assured about finding them all here. For those of you with erratic working hours, We are the best bet. Shop in your PJs, at night or in the wee hours of the morning. This e-commerce never shuts down.
+
+        What's more, with our year-round shopping festivals and events, our prices are irresistible. We're sure you'll find yourself picking up more than what you had in mind. If you are wondering why you should shop from us when there are multiple options available to you, well, the below will answer your question.
+        Teams of us on behalf of our customers every day to meet their desire for lower prices, better selection, and convenient services. One way we guarantee a wide selection of products and services for customers is by creating India-specific programs to support the thousands of small and medium businesses.</p>
+</div>
+    {% endif %}
+<div class="container">
+    <div class="row mx_auto">
+        {% for i in products.object_list %}
+        <div class="my_bottom_margin col-9 col-sm-12 col-md-4 col-lg-4">
+            <div class="card text-center" style="min-width: 18em;margin-top: 12px;">
+                <a href="{{i.get_url}}"><img class="card-img-top my_image" src="{{i.image.url}}" alt="{{i.name}}"></a>
+                <div class="card-body">
+                    <h4>{{i.name}}</h4>
+                    <p>{{i.price}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="mx-auto">
+        {% if products.paginator.num_pages > 1 %}
+
+        <hr>
+        <div class="text-center">
+            {% for pg in products.paginator.page_range %}
+            <a href="?page={{pg}}" class="btn btn-light btn-sm {% if products.number == pg %} active {% endif %}">{{pg}}</a>
+            {% endfor %}
+        </div>
+        {% endif %} 
+    </div>
+    <br>
+</div>
+{% endblock %}
+

@@ -1,0 +1,63 @@
+
+body{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: white;
+}
+
+.header img{
+    height: 3rem;
+    width: 8rem;
+}
+
+nav .btn-outline-secondary{
+    border-radius:20px;
+}
+
+nav .inbox{
+    border-radius:20px;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.banner img{
+    width: 66rem;
+    height: 25rem;
+}
+
+.card .card-img-top{
+    width: 19rem;
+    object-fit: cover;
+    height: 15rem;
+}
+
+.category-content img{
+    object-fit: cover;
+    width: 65rem;
+    height: 26rem;
+}
+
+.proddetail a{
+    background-color: #5c6d7e;
+    border:none;
+    width: -webkit-fill-available;
+}
+
+.product-detail img{
+    width: 25rem;
+    height: 21rem;
+
+}
+.formdiv input{
+    border-radius:20px;
+}
+
+.formdiv .subbut{
+    background-color: #5c6d7e;
+}
+

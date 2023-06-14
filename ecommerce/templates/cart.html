@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Product{% endblock %}
+{% block content %}
+<section class="cart">
+    <div class="container-fluid mb-4" style="width:1180px;">
+        <!--        <div class="container ">-->
+        {% if not cart %}
+        <div>
+            <h1 class="text-center mt-4">Cart is Empty</h1>
+        </div>
+        <div class="text-center">
+            <a class="btn btn-dark mt-2" href="{% url 'shop:allProcat' %}">Continue Shopping</a>
+        </div>
+        {% else %}
+        <div class="row mx-auto mt-4">
+            <h1>Shopping Cart</h1>
+            <div class="col-sm-6 mb-4">
+                <table class="table">
+                    <tr>
+                        <th colspan="5">
+                            YOUR ITEMS
+                        </th>
+                    </tr>
+                    {% for i in cart %}
+                    <tr>
+                        <td><img src="{{i.products.image.url}}" style="height:100px;width:120px;"></td>
+                        <td><h5><strong>{{i.products.name}}</strong></h5></td>
+                        <td><h5><b>Quantity </b>: {{i.quantity}}</h5>
+                            <h5><strong>Price</strong> : {{i.products.price}}</h5></td>
+                        <td><strong>Rs:{{i.subtotal}}</strong></td>
+                        {% if i.quantity < i.products.stock %}
+                        <td>
+                            <a class="text-dark" href="{% url 'cart:cartpg' i.products.id %}"><i
+                                    class="fa-solid fa-plus" aria-hidden="true"></i></a>
+                            <a class="text-dark" href="{% url 'cart:item_reduce' i.products.id %}"><i
+                                    class="fa-solid fa-minus" aria-hidden="true"></i></a>
+                            <a class="text-dark" href="{% url 'cart:item_remove' i.products.id %}"><i
+                                    class="fa-solid fa-trash" aria-hidden="true"></i></a>
+                        </td>
+                        {% else %}
+                        <td>
+                            <a class="text-dark" href="{% url 'cart:item_reduce' i.products.id %}"><i
+                                    class="fa-solid fa-minus" aria-hidden="true"></i></a>
+                            <a class="text-dark" href="{% url 'cart:item_remove' i.products.id %}"><i
+                                    class="fa-solid fa-trash" aria-hidden="true"></i></a>
+                        </td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="col-sm-6 mb-4">
+                <table class="table">
+                    <tr>
+                        <th colspan="5">
+                            CHECKOUT
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>Total Price: {{total}}</td>
+                    </tr>
+                </table>
+                <div class="text-center">
+                    <a href="{% url 'shop:allProcat' %}" style="width: 185px;" class="btn btn-dark">Continue Shopping</a>
+                    <a href="{% url 'cart:porder' %}" style="width: 185px;" class="btn btn-dark">Place Order</a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <!--    </div>-->
+</section>
+{% endblock %}

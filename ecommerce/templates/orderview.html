@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Order Details{% endblock %}
+{% block content %}
+
+<div class="container-fluid mt-3 mb-5">
+    <h1 class="text-center">Your Order</h1>
+    {% for i in ord %}
+    <div class="container mt-4 formdiv">
+        <div class="userdetails text-center">
+            User : {{name}},
+        </div>
+        <div class="ms-auto">
+            <div class="row mx-auto mt-3">
+                <table class="table text-white text-center">
+                    <tr>
+                        <th colspan="5">
+                            <img src="{{i.products.image.url}}" style="height:100px;width:120px;">
+                        </th>
+                        <th colspan="5">
+                            Product : {{i.products.name}}<br>
+                            Address : {{i.address}},
+                            Phone number : {{i.phone}}
+                            {{i.products.price}}<br>
+                            {{i.noofitems}}<br>
+                            {{i.date_added}}<br>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <!--            <div class="col-sm-6 mb-4 ">-->
+            <!--                <table class="table text-white">-->
+            <!--                    <tr>-->
+            <!--                        -->
+            <!--                    </tr>-->
+            <!--                </table>-->
+            <!--            </div>-->
+            <!--        </div>-->
+            <!--        <table class="table">-->
+            <!--            <div class="prodetails mt-3 mb-4 text-center">-->
+            <!--                <div class="row">-->
+            <!--                    <div class="col-md-6">-->
+            <!--                        -->
+            <!--                    </div>-->
+            <!--                    <div class="col-md-6">-->
+            <!--                        -->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </div>-->
+            <!--        </table>-->
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

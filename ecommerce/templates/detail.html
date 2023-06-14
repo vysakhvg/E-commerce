@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Detail{% endblock %}
+{% block content %}
+<section class="detail">
+    <div class="container-fluid">
+        <div class="container product-detail">
+            <div class="row mt-5">
+                <div class="col-md-6 text-center">
+                    <img src="{{p.image.url}}">
+                </div>
+                <div class="col-md-6 mt-5">
+                    <div class="proddetail">
+                        <h1 class="text-center">{{p.name}}</h1>
+                        <div class="probut ms-4">
+                            <p>{{p.description}}</p>
+                            {% if p.stock <= 0 %}
+                            <h2>OUT OF STOCK</h2>
+                            <a href="" class="btn btn-secondary">Add to Cart</a>
+                            {% else %}
+                            <p>Stock : {{p.stock}}</p>
+                            <a href="{% url 'cart:cartpg' p.id %}" class="btn btn-secondary mb-5">Add to Cart</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="banner mt-3">
+    <div class="container-fluid">
+        <div class="container bannerimg">
+            <center>
+                <img src="{% static 'images/banner.jpg' %}" class="img-fluid">
+            </center>
+        </div>
+    </div>
+</div>
+<div class="container para mt-2 mb-3">
+    <div class="cardhead text-center mt-4">
+        <h1>Our Collections</h1>
+    </div>
+    <div class="cardpara mb-3">
+        <p>We provide you the best in
+            clothes and vegetables. You name it, and you can stay assured about finding them all here. For those of you
+            with erratic working hours, We are the best bet. Shop in your PJs, at night or in the wee hours of the
+            morning. This e-commerce never shuts down.
+
+            What's more, with our year-round shopping festivals and events, our prices are irresistible. We're sure
+            you'll find yourself picking up more than what you had in mind. If you are wondering why you should shop
+            from us when there are multiple options available to you, well, the below will answer your question.
+            Teams of us on behalf of our customers every day to meet their desire for lower prices, better selection,
+            and convenient services. One way we guarantee a wide selection of products and services for customers is by
+            creating India-specific programs to support the thousands of small and medium businesses.</p>
+    </div>
+</div>
+<div class="container">
+    <center>
+        <div class="row">
+            {% for i in c %}
+            <div class="col-md-4 mb-5 mt-3">
+                <div class="card shadow mb-4" style="width: 19rem;height: 23rem;background-color: #5c6d7e;">
+                    <img src="{{i.img.url}}" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">{{i.name}}</h5>
+                        <a href="{% url 'shop:allproduct' i.slug %}" class="btn btn-secondary shadow">Details</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </center>
+</div>
+{% endblock %}

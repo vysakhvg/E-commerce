@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Sign Up{% endblock %}
+{% block content %}
+<center>
+    <div class="container-fluid mt-3">
+        <h1>Sign Up</h1>
+
+        <div class="container mt-4 formdiv" style="width:350px;">
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="usr" placeholder="Username">
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="fname" placeholder="Firstname">
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="lname" placeholder="Lastname">
+                </div>
+                <div class="mb-3">
+                    <input type="email" class="form-control" name="mail" placeholder="Email">
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" name="pass" placeholder="Password">
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" name="cpass" placeholder="Confirm Passowrd">
+                </div>
+                <div class="mb-3">
+                    <input type="submit" class="form-control btn btn-secondary subbut">
+                </div>
+            </form>
+        </div>
+    </div>
+</center>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<center>
+    <div class="container-fluid mt-3">
+        <h1>Login</h1>
+        <div class="container mt-4 formdiv" style="width:350px;">
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-4">
+                    <input type="text" class="form-control" name="us" placeholder="Username">
+                </div>
+                <div class="mb-4">
+                    <input type="password" class="form-control" name="pas" placeholder="Password">
+                </div>
+                <div class="mb-4">
+                    <input type="submit" class="btn btn-secondary subbut">
+                </div>
+                <center>
+                    {% if messages %}
+                    <ul class="messages mt-3">
+                        {% for message in messages %}
+                        <li class="{{ message.tags }} h4">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </center>
+            </form>
+        </div>
+    </div>
+</center>
+{% endblock %}

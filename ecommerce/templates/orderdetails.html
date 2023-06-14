@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Order Details{% endblock %}
+{% block content %}
+<center>
+    <div class="container-fluid mt-3">
+        <h1>Order Details</h1>
+        <div class="container mt-4 formdiv" style="width:350px;">
+            {{msg}}<br>
+            Total : {{total}} paid<br>
+            No: of items: {{items}}
+        </div>
+    </div>
+</center>
+{% endblock %}

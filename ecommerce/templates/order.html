@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Order{% endblock %}
+{% block content %}
+<section class="order">
+    <div class="container-fluid">
+        <h1 class="text-center mt-5">Enter Details</h1>
+        <div class="container mt-4" style="width:350px;">
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-4">
+                    <textarea  rows="2" style="border-radius: 15px;" class="form-control" name="add" placeholder="Address"></textarea>
+                </div>
+                <div class="mb-4">
+                    <input type="number" style="border-radius: 15px;" class="form-control" name="phn" placeholder="Phone Number">
+                </div>
+                <div class="mb-4">
+                    <input type="number" style="border-radius: 15px;" class="form-control" name="accnum" placeholder="Account Number">
+                </div>
+                <center>
+                    <div class="mb-4">
+                        <input style="border-radius:20px;background-color: #5c6d7e;" type="submit" class="btn btn-secondary subbut">
+                    </div>
+                </center>
+            </form>
+        </div>
+    </div>
+    </div>
+</section>
+{% endblock %}
